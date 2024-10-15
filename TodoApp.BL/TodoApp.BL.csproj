@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TodoApp.DL\TodoApp.DL.csproj" />
+    <ProjectReference Include="..\TodoApp.Model\TodoApp.Model.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoApp.Model.Models
+namespace TodoApp.Model
 {
-    public class Group: ICreationInfo
+    public class Group: IBaseModel, ICreationInfo
     {
         private string _createdBy;
         private DateTime _createdDate;
@@ -25,7 +25,21 @@ namespace TodoApp.Model.Models
         [Column]
         public string CreatedBy { get => _createdBy; set => _createdBy = value; }
 
+        public string GetTableName()
+        {
+            return "`group`";
+        }
 
-
+        public void SetPrimaryKey(dynamic key)
+        {
+            if(key is int)
+            {
+                GroupID = (int)key;
+            }
+            else
+            {
+                GroupID = 0;
+            }
+        }
     }
 }

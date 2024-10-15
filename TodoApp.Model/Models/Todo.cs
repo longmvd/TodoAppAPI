@@ -6,17 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoApp.Model.Models
+namespace TodoApp.Model
 {
-    public class Todo: ICreationInfo, IModificationInfo
+    public class Todo: IBaseModel, ICreationInfo, IModificationInfo
     {
-        private string _createdBy;
+        private string _createdBy = string.Empty;
         private DateTime _createdDate;
-        private string _modifiedBy;
+        private string _modifiedBy = string.Empty;
         private DateTime _modifiedDate;
 
         [Key]
-        public string TodoID { get; set; }
+        public int TodoID { get; set; }
 
         [Column]
         public string TodoName { get; set; }
@@ -26,6 +26,9 @@ namespace TodoApp.Model.Models
 
         [Column]
         public DateTime EndDate { get; set; }
+
+        [Column]
+        public int GroupID { get; set; }
 
         [Column]
         public DateTime CreatedDate { get => _createdDate; set => _createdDate = value; }
@@ -38,5 +41,22 @@ namespace TodoApp.Model.Models
 
         [Column]
         public string ModifiedBy { get => _modifiedBy; set => _modifiedBy = value; }
+
+        public string GetTableName()
+        {
+            return "Todo";
+        }
+
+        public void SetPrimaryKey(dynamic key)
+        {
+            if(key is int)
+            {
+                TodoID = (int)key;
+            }
+            else
+            {
+                TodoID = 0;
+            }
+        }
     }
 }
