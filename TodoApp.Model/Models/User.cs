@@ -4,18 +4,19 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace TodoApp.Model.Models
+namespace TodoApp.Model
 {
-    public class User: ICreationInfo, IModificationInfo
+    public class User: IBaseModel, ICreationInfo, IModificationInfo
     {
         private string _createdBy;
         private DateTime _createdDate;
         private string _modifiedBy;
         private DateTime _modifiedDate;
         [Key]
-        public string UserID { get; set; }
+        public int UserID { get; set; }
 
         [Column]
         public string Username { get; set; }
@@ -37,5 +38,22 @@ namespace TodoApp.Model.Models
 
         [Column]
         public string ModifiedBy { get => _modifiedBy; set => _modifiedBy = value; }
+
+        public string GetTableName()
+        {
+            return "`user`";
+        }
+
+        public void SetPrimaryKey(dynamic key)
+        {
+            if (key is int)
+            {
+                UserID = (int)key;
+            }
+            else
+            {
+                UserID = 0;
+            }
+        }
     }
 }

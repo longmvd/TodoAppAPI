@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TodoApp.Model
 {
-    public interface IModificationInfo
+    public interface IBaseModel
     {
-        DateTime ModifiedDate { get; set; }
+        string GetTableName();
 
-        string ModifiedBy { get; set; }
+        void SetPrimaryKey(dynamic key);
     }
 }
