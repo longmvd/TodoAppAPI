@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace TodoApp.Model
 {
-    public class Group: IBaseModel, ICreationInfo
+    public class Group: IBaseModel, ICreationInfo, IModificationInfo
     {
-        private string _createdBy;
+        private string _createdBy = string.Empty;
         private DateTime _createdDate;
+        private string _modifiedBy = string.Empty;
+        private DateTime _modifiedDate;
 
         [Key]
         public int GroupID { get; set; }
@@ -24,6 +26,12 @@ namespace TodoApp.Model
 
         [Column]
         public string CreatedBy { get => _createdBy; set => _createdBy = value; }
+
+        [Column]
+        public DateTime ModifiedDate { get => _modifiedDate; set => _modifiedDate = value; }
+
+        [Column]
+        public string ModifiedBy { get => _modifiedBy; set => _modifiedBy = value; }
 
         public string GetTableName()
         {

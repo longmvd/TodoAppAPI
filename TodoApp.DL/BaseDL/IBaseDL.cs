@@ -10,6 +10,9 @@ namespace TodoApp.DL
     public interface IBaseDL
     {
         IDbConnection GetConnection(string connectionString);
+
         Task<T> ExecuteScalarCommandTextAsync<T>(string command, IDictionary<string, object> param, IDbConnection? connection = null, IDbTransaction? transaction = null);
+
+        Task<int> ExecuteCommandTextAsync(string command, IDictionary<string, object> param, IDbConnection? connection = null, IDbTransaction? transaction = null);
     }
 }

@@ -10,5 +10,11 @@ namespace TodoApp.BL
     public interface IBaseBL
     {
         Task<T> InserOne<T>(T baseModel) where T : IBaseModel, ICreationInfo;
+
+        Task<T> UpdateOne<T>(T baseModel)  where T : IBaseModel, IModificationInfo;
+
+        Task<bool> DeleteOne<T>(int id) where T : IBaseModel;
+
+
     }
 }
