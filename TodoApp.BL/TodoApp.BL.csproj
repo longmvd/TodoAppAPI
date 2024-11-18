@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TodoApp.Common\TodoApp.Common.csproj" />
     <ProjectReference Include="..\TodoApp.DL\TodoApp.DL.csproj" />
     <ProjectReference Include="..\TodoApp.Model\TodoApp.Model.csproj" />
   </ItemGroup>

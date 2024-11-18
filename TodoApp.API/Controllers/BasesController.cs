@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoApp.BL;
 using TodoApp.Model;
+using TodoApp.Model.Models.DTO;
 
 namespace TodoApp.API.Controllers
 {
@@ -62,6 +63,25 @@ namespace TodoApp.API.Controllers
                 return StatusCode(500, ex.Message);
             }
 
+        }
+
+        [HttpPost("paging")]
+        public async Task<IActionResult> GetPaging([FromBody] PagingRequest pagingRequest)
+        {
+            if (pagingRequest == null)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var result = await _bl.GetPaging<T>(pagingRequest);
+                return Ok(result);
+
+            }catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            
         }
 
 
