@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TodoApp.Model;
+using TodoApp.Model.Models.DTO;
 
 namespace TodoApp.BL
 {
@@ -14,6 +15,8 @@ namespace TodoApp.BL
         Task<T> UpdateOne<T>(T baseModel)  where T : IBaseModel, IModificationInfo;
 
         Task<bool> DeleteOne<T>(int id) where T : IBaseModel;
+
+        Task<PagingResponse> GetPaging<T>(PagingRequest pagingRequest) where T : IBaseModel;
 
 
     }

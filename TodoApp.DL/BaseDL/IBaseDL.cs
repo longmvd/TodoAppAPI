@@ -14,5 +14,10 @@ namespace TodoApp.DL
         Task<T> ExecuteScalarCommandTextAsync<T>(string command, IDictionary<string, object> param, IDbConnection? connection = null, IDbTransaction? transaction = null);
 
         Task<int> ExecuteCommandTextAsync(string command, IDictionary<string, object> param, IDbConnection? connection = null, IDbTransaction? transaction = null);
+
+        Task<IEnumerable<T>> QueryUsingCommandTextAsync<T>(string command, IDictionary<string, object> param, IDbConnection? connection = null, IDbTransaction? transaction = null);
+
+        Task<List<List<object>>> QueryMultipleUsingCommandTextAsync(List<Type> types, string command, IDictionary<string, object> param, IDbConnection? connection = null, IDbTransaction? transaction = null);
+
     }
 }

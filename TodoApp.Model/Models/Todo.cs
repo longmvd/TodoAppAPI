@@ -22,7 +22,7 @@ namespace TodoApp.Model
         public string TodoName { get; set; }
 
         [Column]
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         [Column]
         public DateTime EndDate { get; set; }
